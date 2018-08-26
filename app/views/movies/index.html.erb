@@ -2,36 +2,19 @@
 
 <h1>Movies</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Released on</th>
-      <th>Poster</th>
-      <th>Genres</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+<div id="Holder">
+  <% @movies.each do |movie| %>
+    <div class="Movie">
+      <div><%= movie.title %></div>
+      <div><img src = <%= movie.poster %> ></div>
+      <div>
+        <% movie.genres.each do |genre| %>
+          <%= genre.name %>
+        <% end %>
+      </div>
+      <div><%= movie.release_on.strftime('%b %d %Y') %></div>
+      <div><%= link_to 'Show', movie %></div>
+    </div>
+  <% end %>
+</div>
 
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.title %></td>
-        <td><%= movie.release_on.strftime('%b %d %Y') %></td>
-        <td><img src= <%= movie.poster %> > </td>
-        <td>
-          <% movie.genres.each do |genre| %>
-            <%= genre.name %>
-          <% end %>
-        </td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Movie', new_movie_path %>
