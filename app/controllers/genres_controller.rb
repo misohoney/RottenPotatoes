@@ -1,19 +1,20 @@
-require "http"
+require 'http'
 
 class GenresController < ApplicationController
   before_action :set_genre, only: [:show, :edit, :update, :destroy]
 
+  #Fetch data from MovieDB and shove to Genre table
   def get_genre_list 
     @get_genre_list = HTTP.get("https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=a535faacf3a8b1eb413a9dce8ae2ca51").to_s
     @genre_data = JSON.parse(@get_genre_list)
 
+    #Loop through moviedb list and add each genre to Genre model
     for i in 0..@genre_data["genres"].length-1
       current_genre = @genre_data["genres"][i]
       number = current_genre["id"]
       name = current_genre["name"]
-
-      Genre.create ({"number" => number,
-        "name" => name})
+      Genre.create ({ "number" => number,
+                      "name" => name })
       end
   end
 

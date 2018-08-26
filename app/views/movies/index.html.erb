@@ -6,9 +6,10 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Release on</th>
+      <th>Released on</th>
       <th>Poster</th>
-      <th colspan="3"></th>
+      <th>Genres</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -16,8 +17,13 @@
     <% @movies.each do |movie| %>
       <tr>
         <td><%= movie.title %></td>
-        <td><%= movie.release_on %></td>
-        <td><%= movie.poster %></td>
+        <td><%= movie.release_on.strftime('%b %d %Y') %></td>
+        <td><img src= <%= movie.poster %> > </td>
+        <td>
+          <% movie.genres.each do |genre| %>
+            <%= genre.name %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', movie %></td>
         <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
         <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
