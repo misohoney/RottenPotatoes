@@ -11,10 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :movie_id %>
-    <%= form.number_field :movie_id, :value => @movie.id %>
-  </div>
+  <div>You are leaving a review for <%= @movie.title %></div>
+
 
   <div class="field">
     <%= form.label :user_name %>

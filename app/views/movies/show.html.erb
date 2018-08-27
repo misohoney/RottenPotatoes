@@ -10,11 +10,16 @@
       <strong>Release on:</strong>
       <%= @movie.release_on %>
     </p>
+
     <p>
-      <img src = <%= @movie.poster %>>
+      <img id="Poster" src=<%= @movie.poster %>>
     </p>
 
-    <%= link_to 'Review', new_movie_review_path(@movie)%>
+    <p>
+      <p><%= image_tag (movieRating(@movie.reviews)), id: "RatingIcon" %></p>
+    </p>
+    
+    <%= link_to 'Leave a review', new_movie_review_path(@movie)%>
 
   </div>
   <div id="ReviewCol">
@@ -23,6 +28,7 @@
       <div>
         <p><%= review.user_name %></p>
         <p><%= review.created_at %></p>
+        <p><%= image_tag (reviewRating(review)), id: "RatingIcon" %></p>
         <p><%= review.comment %></p>
       </div>
     <% end %>

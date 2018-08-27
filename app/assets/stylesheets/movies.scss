@@ -6,19 +6,17 @@
     width: 900px;
     height: auto;
     
-    .Movie {
+    #Movie {
         width: 300px;
         height: auto;
         margin: 10px;
 
-        img {
+        #Poster {
             width: 300px;
             height: 400px;
         }
     }
 }
-
-
 
 #MovieShowHolder {
     display: flex;
@@ -29,7 +27,7 @@
         width: 70%;
         height: auto;
 
-        img {
+        #Poster {
             width: 350px;
             height: 500px;
         }
@@ -43,5 +41,9 @@
 
 }
 
+#RatingIcon {
+    width: 30px;
+    height: 30px;
+}
 
 

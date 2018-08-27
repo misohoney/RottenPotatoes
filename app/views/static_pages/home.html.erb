@@ -1,2 +1,16 @@
 <h1>StaticPages#home</h1>
 <p>Find me in app/views/static_pages/about.html.erb</p>
+<% @movies.each do |movie| %>
+    <div class="Movie">
+      <p><%= movie.title %></p>
+      <p><img src = <%= movie.poster %> ></p>
+      <p>
+        <% movie.genres.each do |genre| %>
+          <%= genre.name %>
+        <% end %>
+      </p>
+      <p><%= movie.release_on.strftime('%b %d %Y') %></p>
+      <p><%= link_to 'Leave a Review', new_movie_review_path(movie) %></p>
+      <p><%= link_to 'Read Reviews', movie %></p>
+    </div>
+  <% end %>
