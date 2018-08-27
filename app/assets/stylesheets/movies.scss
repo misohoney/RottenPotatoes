@@ -1,18 +1,47 @@
 // Place all the styles related to the Movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#Holder {
+#MovieIndexHolder {
     display: flex;
     width: 900px;
     height: auto;
-}
-
-.Movie {
-    width: 300px;
-    height: auto;
-    margin: 10px;
-    img {
+    
+    .Movie {
         width: 300px;
-        height: 400px;
+        height: auto;
+        margin: 10px;
+
+        img {
+            width: 300px;
+            height: 400px;
+        }
     }
 }
+
+
+
+#MovieShowHolder {
+    display: flex;
+    width: 100%;
+    height: auto;
+
+    #MovieCol {
+        width: 70%;
+        height: auto;
+
+        img {
+            width: 350px;
+            height: 500px;
+        }
+    }
+    
+    #ReviewCol {
+        width: 30%;
+        height: auto;
+    }
+
+
+}
+
+
+
