@@ -1,3 +1,5 @@
+
+
 <%= form_with(model: [@movie, @review]) do |form| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
@@ -26,7 +28,14 @@
 
   <div class="field">
     <%= form.label :rating %>
-    <%= form.number_field :rating %>
+    <div id="IconHolder">
+      <div class="Icon"><%= image_tag ("score1.png"), alt: "1", id: "score1", class: "RatingIcon", onclick: "changeFaceStyle(this.id)" %></div>
+      <div class="Icon"><%= image_tag ("score2.png"), alt: "2", id: "score2", class: "RatingIcon", onclick: "changeFaceStyle(this.id)" %></div>
+      <div class="Icon"><%= image_tag ("score3.png"), alt: "3", id: "score3", class: "RatingIcon Selected", onclick: "changeFaceStyle(this.id)" %></div>
+      <div class="Icon"><%= image_tag ("score4.png"), alt: "4", id: "score4", class: "RatingIcon", onclick: "changeFaceStyle(this.id)" %></div>
+      <div class="Icon"><%= image_tag ("score5.png"), alt: "5", id: "score5", class: "RatingIcon", onclick: "changeFaceStyle(this.id)" %></div>
+    </div>
+    <%= form.hidden_field :rating, id: "RatingInput" , value: 3 %>
   </div>
 
   <div class="field">
@@ -37,4 +46,25 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>
+
+<script> 
+
+
+changeFaceStyle = (id) => {
+  let face = document.getElementById(id);
+  let rating_input = document.getElementById("RatingInput");
+  rating_input.value = face.alt;
+  for (let i = 1; i < 6; i++) {
+    let cur_face = document.getElementById("score" + i );
+    console.log(cur_face);
+    if (cur_face == face) {
+      cur_face.className = "RatingIcon Selected";
+    } else {
+      cur_face.className = "RatingIcon";
+    }
+  }
+}
+
+</script>

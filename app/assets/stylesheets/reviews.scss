@@ -1,3 +1,29 @@
 // Place all the styles related to the Reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#IconHolder {
+    display: flex;
+}
+
+.Icon {
+    width: 42px;
+    height: 42px;
+}
+
+.RatingIcon {
+    position: relative;
+    width: 30px;
+    margin-top: 4px;
+    filter: opacity(.4);
+    &:hover {
+        filter: opacity(1);
+    }
+}
+
+.Selected {
+    width: 40px;
+    left: -5px;
+    top: -5px;
+    filter: opacity(1);
+    
+}
