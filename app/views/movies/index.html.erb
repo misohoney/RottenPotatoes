@@ -2,21 +2,32 @@
 
 <h1>Movies</h1>
 
-<div id="MovieIndexHolder">
-  <% @movies.each do |movie| %>
-    <div id="Movie">
-      <p><%= movie.title %></p>
-      <p><img id="Poster" src = <%= movie.poster %> ></p>
-      <p>
-        <% movie.genres.each do |genre| %>
-          <%= genre.name %>
-        <% end %>
-      </p>
-      <p><%= movie.release_on.strftime('%b %d %Y') %></p>
-      <p><%= image_tag (movieRating(movie.reviews)), id: "RatingIcon" %></p>
-      <p><%= link_to 'Leave a Review', new_movie_review_path(movie) %></p>
-      <p><%= link_to 'Read Reviews', movie %></p>
-    </div>
-  <% end %>
+<button onClick="displayByTitle()">title</button>
+<button onClick="displayByDate()">date</button>
+<button onClick="displayByGenre()">genre</button>
+
+<div id="MovieSortDisplay">
 </div>
 
+
+
+<script>
+displayByTitle()
+
+function displayByTitle() {
+  let partialDiv = document.getElementById("MovieSortDisplay");
+  partialDiv.innerHTML = `<%= render :partial => 'title' %>`;
+}
+
+function displayByDate() {
+  let partialDiv = document.getElementById("MovieSortDisplay");
+  partialDiv.innerHTML = `<%= render :partial => 'date' %> `;
+}
+
+function displayByGenre() {
+  let partialDiv = document.getElementById("MovieSortDisplay");
+  partialDiv.innerHTML = `<%= render :partial => 'genre' %> `;
+}
+
+
+</script>

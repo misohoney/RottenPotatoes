@@ -1,0 +1,19 @@
+<h1>display by title</h1>
+
+<div id="MovieIndexHolder">
+  <% @moviesByTitle.each do |movie| %>
+    <div id="Movie">
+      <p><%= movie.title %></p>
+      <p><img id="Poster" src = <%= movie.poster %> ></p>
+      <p>
+        <% movie.genres.each do |genre| %>
+          <%= genre.name %>
+        <% end %>
+      </p>
+      <p><%= movie.release_on.strftime('%b %d %Y') %></p>
+      <p><%= image_tag (movieRating(movie.reviews)), id: "RatingIcon" %></p>
+      <p><%= link_to 'Leave a Review', new_movie_review_path(movie) %></p>
+      <p><%= link_to 'Read Reviews', movie %></p>
+    </div>
+  <% end %>
+</div>

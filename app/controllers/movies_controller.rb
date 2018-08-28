@@ -9,7 +9,7 @@ class MoviesController < ApplicationController
     @moviedb_data = JSON.parse(@get_moviedb_list)
     
     #Loop through moviedb list and add each movie to Movie model
-    for i in 0..1
+    for i in 0..10
       current_movie = @moviedb_data["results"][i]
       title = current_movie["title"]
       release_date = current_movie["release_date"]
@@ -41,10 +41,13 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
 
+
   def index
     @genres = Genre.all
     @movies = Movie.all
-    #if Movie table is empty, then fetch data from moviedb
+    @moviesByTitle = Movie.order('title ASC')
+    @moviesByDate = Movie.order('release_on ASC')
+ 
     if Movie.any? == false 
       get_movie_list()
     end

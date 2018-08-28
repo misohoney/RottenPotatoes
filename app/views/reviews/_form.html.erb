@@ -1,5 +1,3 @@
-
-
 <%= form_with(model: [@movie, @review]) do |form| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
@@ -15,7 +13,6 @@
 
   <div>You are leaving a review for <%= @movie.title %></div>
 
-
   <div class="field">
     <%= form.label :user_name %>
     <%= form.text_field :user_name %>
@@ -28,13 +25,7 @@
 
   <div class="field">
     <%= form.label :rating %>
-    <div id="IconHolder">
-      <div class="Icon"><%= image_tag ("score1.png"), alt: "1", id: "score1", class: "RatingIcon", onclick: "changeFaceStyle(this.id)" %></div>
-      <div class="Icon"><%= image_tag ("score2.png"), alt: "2", id: "score2", class: "RatingIcon", onclick: "changeFaceStyle(this.id)" %></div>
-      <div class="Icon"><%= image_tag ("score3.png"), alt: "3", id: "score3", class: "RatingIcon Selected", onclick: "changeFaceStyle(this.id)" %></div>
-      <div class="Icon"><%= image_tag ("score4.png"), alt: "4", id: "score4", class: "RatingIcon", onclick: "changeFaceStyle(this.id)" %></div>
-      <div class="Icon"><%= image_tag ("score5.png"), alt: "5", id: "score5", class: "RatingIcon", onclick: "changeFaceStyle(this.id)" %></div>
-    </div>
+    <div id="IconHolder"></div>
     <%= form.hidden_field :rating, id: "RatingInput" , value: 3 %>
   </div>
 
@@ -51,6 +42,28 @@
 
 <script> 
 
+generateIcon()
+
+function generateIcon () {
+  let holder = document.getElementById("IconHolder")
+  holder.innerHTML = `
+    <div class="Icon">
+      <%= image_tag ("score1.png"), alt: "1", id: "score1", class: "RatingIcon", onclick: "changeFaceStyle(this.id)" %>
+    </div>
+    <div class="Icon">
+      <%= image_tag ("score2.png"), alt: "2", id: "score2", class: "RatingIcon", onclick: "changeFaceStyle(this.id)" %>
+    </div>
+    <div class="Icon">
+      <%= image_tag ("score3.png"), alt: "3", id: "score3", class: "RatingIcon Selected", onclick: "changeFaceStyle(this.id)" %>
+    </div>
+    <div class="Icon">
+      <%= image_tag ("score4.png"), alt: "4", id: "score4", class: "RatingIcon", onclick: "changeFaceStyle(this.id)" %>
+    </div>
+    <div class="Icon">
+      <%= image_tag ("score5.png"), alt: "5", id: "score5", class: "RatingIcon", onclick: "changeFaceStyle(this.id)" %>
+    </div>
+  `
+}
 
 changeFaceStyle = (id) => {
   let face = document.getElementById(id);
