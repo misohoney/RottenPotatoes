@@ -1,4 +1,4 @@
-<%= form_with(model: [@movie, @review]) do |form| %>
+<%= form_for([movie, review]) do |form| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div>You are leaving a review for <%= @movie.title %></div>
+  <div>You are leaving a review for <%= movie.title %></div>
 
   <div class="field">
     <%= form.label :user_name %>

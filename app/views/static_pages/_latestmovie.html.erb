@@ -1,0 +1,20 @@
+<strong>Lastest Movie</strong>
+<div id="LatestMovieHolder">
+
+    <% @movies.each do |movie| %>
+        <div class="Movie">
+            <div class="Reaction">
+                <div class ="SpeechBubble">
+                    <p><%= image_tag (movieRating(movie.reviews)), id: "ReactionIcon" %></p>
+                </div>
+            </div>
+            <%= link_to movie do %>
+                <div class="Description">
+                    <p><img class="Poster" src = <%= movie.poster %> ></p>
+                    <p class="Title"><%= link_to movie.title, movie, {class: "Link"} %>
+                </div>
+            <% end %>
+        </div>
+        
+    <% end %>
+</div>

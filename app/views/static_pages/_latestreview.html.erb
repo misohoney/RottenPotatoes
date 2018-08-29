@@ -1,0 +1,17 @@
+<div id="ReviewCol">
+    <strong>Reviews</strong>
+    <% @reviews.each do |review| %>
+         <%= link_to review.movie do %>
+            <div class="Review">
+                <div class="Comment">
+                    <p> Thought on <%= review.movie.title %>: </p>
+                    <p>" <%= review.comment %> "</p>
+                    <p>- <%= review.user_name %> 
+                </div>
+                <div class="ReviewReaction">
+                    <p><%= image_tag (reviewRating(review)), id: "RatingIcon" %></p>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
+</div>

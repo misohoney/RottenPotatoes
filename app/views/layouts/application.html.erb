@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MovieListApp</title>
+    <title>RottenPotatoes</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  
   </head>
 
+
+
   <body>
+      <nav>
+      <div id="NavTitleHolder">
+        <h1 id="NavTitle">Rotten Potatoes</h1>
+      </div>
+      <div id="NavLinkHolder">
+        <button class="NavLink"><%= link_to 'About', about_path, {class: "Link"} %></button>
+        <button class="NavLink"><%= link_to 'Reviews', reviews_path, {class: "Link"} %></button>
+        <button class="NavLink"><%= link_to 'Movies', movies_path, {class: "Link"} %></button>
+        <button class="NavLink"><%= link_to 'Home', home_path, {class: "Link"} %></button>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
